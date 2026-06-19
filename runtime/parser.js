@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { types } from 'util';
+// import { types } from 'util';
 
 /**
  * Parse a file and separate code blocks based on [js] and [python] tags.
@@ -8,6 +8,7 @@ import { types } from 'util';
  * @returns {Array<{type: string, code: string}>} Array of code blocks.
  */
 
+/** 
 export function parser(file) {
 
     const content = fs.readFileSync("../examples/app.pn");
@@ -40,9 +41,32 @@ export function parser(file) {
             mode = 'python';
             continue;
         }
+         if (line.trim() === "@js") {
 
+            if (current.length) {
+                blocks.push({
+                    type: mode,
+                    code: current.join("\n")
+                });
+                current = [];
+            }
+            mode = "js";
+            continue;
+        }
+
+        if (line.trim() === "@endjs") {
+            if (current.length) {
+                blocks.push({
+                    type: mode,
+                    code: current.join("\n")
+                });
+                current = [];
+            }
+            mode = "python";
+
+            continue;
+        }
         current.push(line);
-
     }
 
     if (current.length) {
@@ -52,8 +76,51 @@ export function parser(file) {
         })
     }
 
-    /* console.log(blocks)
-    console.log(current)  */
+     console.log(blocks)
+    console.log(current) 
     return blocks;
 
+} */
+
+
+export function parse(file) {
+
+    const content = fs.readFileSync(file, "utf8");
+    const lines = content.split("\n");
+    let blocks = [];
+    let current = [];
+    let mode = null;
+
+    function saveBlock() {
+        const code = current.join("\n").trim();
+        if (!code) return;
+        blocks.push({
+            type: mode,
+            code
+        });
+        current = [];
+    }
+
+    for (const line of lines) {
+        const trimmed = line.trim();
+        if (
+            trimmed === "[js]" ||
+            trimmed === "@js"
+        ) {
+            saveBlock();
+            mode = "js";
+            continue;
+        }
+        if (
+            trimmed === "[python]" ||
+            trimmed === "@endjs"
+        ) {
+            saveBlock();
+            mode = "python";
+            continue;
+        }
+        current.push(line);
+    }
+    saveBlock();
+    return blocks;
 }

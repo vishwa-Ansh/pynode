@@ -8,8 +8,8 @@
  * - JavaScript
  * - Python
  */
-
-import {parser} from "./parser.js";
+import { parse } from "./parser.js";
+// import {parser} from "./parser.js";
 import { runJavaScreapt } from "./jsRunner.js";
 import { runPython } from "./pyRunner.js";
 
@@ -26,7 +26,7 @@ const file = process.argv[2];
  *
  * @type {Array<{type: string, code: string}>}
  */
-const blocks = parser(file);
+const blocks = parse(file);
 
 /**
  * Iterate through each parsed block and execute it

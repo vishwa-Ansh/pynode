@@ -1,5 +1,12 @@
-[js]
-console.log("hello Ansh");
+
+@js
+console.log("Inside JS")
+@endjs
 
 [python]
-print("hello Vishwakarma")
+print("33333")
+print("Python End")
+
+[js]
+
+console.log("Bye")
