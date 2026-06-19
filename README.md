@@ -1,71 +1,117 @@
-PyNode
+# 🚀 PyNode
 
-PyNode is an experimental polyglot runtime that allows JavaScript (Node.js) and Python code to run inside a single .pn file.
+> Run JavaScript (Node.js) and Python together in a single `.pn` file.
 
-Features
+PyNode is an experimental polyglot runtime that combines the power of Node.js and Python into one language.
 
-* JavaScript and Python in one file
-* Block-based syntax
-* Nested JavaScript blocks
-* Shared runtime context (vf)
-* Simple and extensible architecture
-* VS Code support (coming soon)
-* CLI support (coming soon)
+---
 
-⸻
+## ✨ Features
 
-Hello World
+- JavaScript and Python in one file
+- Multiple code blocks
+- Shared runtime context (`vf`)
+- Fast and lightweight
+- Simple syntax
+- Extensible architecture
+- VS Code extension (Coming Soon)
+- CLI support (Coming Soon)
 
+---
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/your-username/pynode.git
+
+cd pynode
+
+npm install
+```
+
+---
+
+# 🚀 Hello World
+
+## examples/hello.pn
+
+```pn
 [js]
+
 console.log("Hello from JavaScript")
+
 [python]
+
 print("Hello from Python")
+```
 
 Run:
 
+```bash
 node runtime/runtime.js examples/hello.pn
+```
 
 Output:
 
+```text
 Hello from JavaScript
 Hello from Python
+```
 
-⸻
+---
 
-Nested Blocks
+# 🔥 Nested Blocks
 
+```pn
 [python]
+
 print("Python Start")
+
 @js
-console.log("Inside JS")
+
+console.log("Inside JavaScript")
+
 @endjs
+
 print("Python End")
+```
 
 Output:
 
+```text
 Python Start
-Inside JS
+Inside JavaScript
 Python End
+```
 
-⸻
+---
 
-Shared Context
+# 📦 Shared Context
 
+```pn
 [js]
+
 vf.name = "Ansh"
+
 console.log(vf.name)
+
 [python]
+
 print(vf["name"])
+```
 
 Output:
 
+```text
 Ansh
 Ansh
+```
 
-⸻
+---
 
-Project Structure
+# 📁 Project Structure
 
+```text
 pynode/
 │
 ├── runtime/
@@ -91,95 +137,109 @@ pynode/
 ├── package.json
 ├── README.md
 └── LICENSE
+```
 
-⸻
+---
 
-Architecture
+# ⚙️ Architecture
 
-app.pn
-   │
-   ▼
-parser.js
-   │
-   ▼
-blocks
-   │
-   ▼
-runtime.js
-   │
- ┌────────┐
- ▼        ▼
-jsRunner  pyRunner
+```text
+          app.pn
+             │
+             ▼
+         parser.js
+             │
+             ▼
+           blocks
+             │
+             ▼
+         runtime.js
+         ┌────────┐
+         ▼        ▼
+   jsRunner    pyRunner
+```
 
-⸻
+---
 
-Current Progress
+# 📅 Progress
 
-Day 1
+## ✅ Day 1
 
-* Parser
-* JavaScript Runner
-* Python Runner
+- Parser
+- JavaScript Runner
+- Python Runner
 
-Day 2
+## ✅ Day 2
 
-* Nested JavaScript Blocks
+- Nested JavaScript Blocks
 
-Day 3
+## ✅ Day 3
 
-* Improved Block Parser
-* Multiple Block Support
+- Improved Parser
+- Multiple Block Support
 
-Day 4
+## ✅ Day 4
 
-* Shared Context (vf)
+- Shared Context (`vf`)
 
-⸻
+---
 
-Roadmap
+# 🗺️ Roadmap
 
-Day 5
+## Day 5
 
-* Python → JavaScript Bridge
-* JavaScript → Python Bridge
+- [ ] Python → JavaScript Bridge
+- [ ] JavaScript → Python Bridge
 
-Day 6
+## Day 6
 
 CLI
 
+```bash
 pn app.pn
+```
 
-Day 7
+## Day 7
 
-* VS Code Extension
-* Syntax Highlighting
-* File Icons
+- [ ] VS Code Extension
+- [ ] Syntax Highlighting
+- [ ] File Icons
 
-⸻
+---
 
-Future
+# 🔮 Future
 
-Package Manager
+## Package Manager
 
+```bash
 pn install express
 pn install numpy
+```
 
-HTTP Framework
+## HTTP Framework
 
+```pn
 GET "/" {
+
     return "Hello World"
+
 }
+```
 
-AI First Framework
+## AI First Framework
 
+```pn
 POST "/chat" {
+
     return ask(
         request.message
     )
+
 }
+```
 
-⸻
+---
 
-Goal
+# 🎯 Goal
 
 PyNode aims to provide a simple and powerful runtime where JavaScript (Node.js) and Python work together seamlessly inside a single file.
