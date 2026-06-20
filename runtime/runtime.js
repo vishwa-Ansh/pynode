@@ -10,7 +10,7 @@
  */
 import { parse } from "./parser.js";
 // import {parser} from "./parser.js";
-import { runJavaScreapt } from "./jsRunner.js";
+import { runJS } from "./jsRunner.js";
 import { runPython } from "./pyRunner.js";
 
 /**
@@ -38,7 +38,7 @@ for (const block of blocks) {
      * Execute JavaScript code blocks.
      */
     if (block.type === "js") {
-        runJavaScreapt(block.code);
+        runJS(block.code);
     }
 
     /**
